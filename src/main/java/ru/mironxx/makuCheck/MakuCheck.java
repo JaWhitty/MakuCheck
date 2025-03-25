@@ -12,12 +12,30 @@ public final class MakuCheck extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        getLogger().info(prefix + " Started!");
+        getLogger().info("Started!");
 
         getCommand("check").setExecutor(new CommandExecutor() {
             @Override
             public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-                return false;
+                if (args.length == 0) {
+                    commandSender.sendMessage( prefix + "Running MakuCheck version 1.0.0 SNAPSHOT");
+                    return true;
+                }
+
+                if(args[0].equalsIgnoreCase("reload")) {
+                    reloadConfig();
+                    commandSender.sendMessage(prefix + " Plugin reloaded!");
+                    return true;
+                }
+
+                if(args[0].equalsIgnoreCase("help")) {
+                    commandSender.sendMessage("Usage:");
+                    commandSender.sendMessage("/check help - Shows this list");
+                    commandSender.sendMessage("/check reload - Reload plugin");
+                    return true;
+                }
+
+                return true;
             }
         });
     }
@@ -25,6 +43,6 @@ public final class MakuCheck extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        getLogger().info(prefix + "Bye-bye!");
+        getLogger().info("Bye-bye!");
     }
 }
