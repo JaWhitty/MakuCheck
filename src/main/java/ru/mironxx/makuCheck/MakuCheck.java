@@ -14,35 +14,41 @@ public final class MakuCheck extends JavaPlugin {
         // Plugin startup logic
         getLogger().info("Started!");
 
-        getCommand("check").setExecutor(new CommandExecutor() {
-            @Override
-            public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-                if (args.length == 0) {
-                    commandSender.sendMessage( prefix + "Running MakuCheck version 1.0.0 SNAPSHOT");
-                    return true;
-                }
+        saveDefaultConfig();
 
-                if(args[0].equalsIgnoreCase("reload")) {
-                    reloadConfig();
-                    commandSender.sendMessage(prefix + " Plugin reloaded!");
-                    return true;
-                }
-
-                if(args[0].equalsIgnoreCase("help")) {
-                    commandSender.sendMessage("Usage:");
-                    commandSender.sendMessage("/check help - Shows this list");
-                    commandSender.sendMessage("/check reload - Reload plugin");
-                    return true;
-                }
-
-                return true;
-            }
-        });
+        // Передаем обработчик команд в setExecutor
+        getCommand("check").setExecutor(new CheckCommandExecutor());
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
         getLogger().info("Bye-bye!");
+    }
+
+    // Вынесем обработку команды в отдельный класс
+    public class CheckCommandExecutor implements CommandExecutor {
+        @Override
+        public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
+            if (args.length == 0) {
+                commandSender.sendMessage(prefix + " Running MakuCheck version 1.0.0 SNAPSHOT");
+                return true;
+            }
+
+            if (args[0].equalsIgnoreCase("reload")) {
+                reloadConfig();
+                commandSender.sendMessage(prefix + " Plugin reloaded!");
+                return true;
+            }
+
+            if (args[0].equalsIgnoreCase("help")) {
+                commandSender.sendMessage("Usage:");
+                commandSender.sendMessage("/check help - Shows this list");
+                commandSender.sendMessage("/check reload - Reload plugin");
+                return true;
+            }
+
+            return false;
+        }
     }
 }
