@@ -1,0 +1,10 @@
+name: MakuCheck
+version: '1.0-SNAPSHOT'
+main: ru.mironxx.makuCheck.MakuCheck
+api-version: '1.20'
+commands:
+  check:
+    description: Тестовая команда
+    usage: /check
+    permission: makucheck.check
+    permission-message: У вас нет прав!
