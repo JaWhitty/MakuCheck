@@ -1,2 +1,1 @@
-<h1>MakuCheck</h1>
-It's My first plugin!
+<h1 style="font-family: 'Comic Sans MS';">MakuCheck</h1>
