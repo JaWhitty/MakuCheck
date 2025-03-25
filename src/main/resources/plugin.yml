@@ -2,6 +2,8 @@ name: MakuCheck
 version: '1.0-SNAPSHOT'
 main: ru.mironxx.makuCheck.MakuCheck
 api-version: '1.20'
+depend:
+  - SimplePlayerFreeze
 commands:
   check:
     description: Тестовая команда

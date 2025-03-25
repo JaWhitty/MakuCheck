@@ -11,19 +11,18 @@ public final class MakuCheck extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
-        getLogger().info("Started!");
+
+        getLogger().info("Запущено!");
 
         saveDefaultConfig();
 
-        // Передаем обработчик команд в setExecutor
         getCommand("check").setExecutor(new CheckCommandExecutor());
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        getLogger().info("Bye-bye!");
+        getLogger().info("Пока-пока!");
     }
 
     // Вынесем обработку команды в отдельный класс
@@ -31,7 +30,7 @@ public final class MakuCheck extends JavaPlugin {
         @Override
         public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
             if (args.length == 0) {
-                commandSender.sendMessage(prefix + " Running MakuCheck version 1.0.0 SNAPSHOT");
+                commandSender.sendMessage(prefix + " Запущен MakuCheck версии 1.0.0 SNAPSHOT");
                 return true;
             }
 
