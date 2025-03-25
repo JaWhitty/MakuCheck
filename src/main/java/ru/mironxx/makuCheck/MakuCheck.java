@@ -7,7 +7,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MakuCheck extends JavaPlugin {
 
-    public String prefix = "[MakuCheck]";
+    public String prefix = getConfig().getString("prefix")
+    ConsoleCommandSender console = getServer().getConsoleSender();
 
     @Override
     public void onEnable() {
