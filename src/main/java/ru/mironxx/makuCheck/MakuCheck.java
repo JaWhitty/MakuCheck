@@ -71,8 +71,14 @@ public final class MakuCheck extends JavaPlugin {
                 }
             }
 
+            if (args.length > 1 && args[0].equalsIgnoreCase("uncheck")) {
+                getServer().dispatchCommand(console, "unfreeze " + args[1]);
+                getServer().dispatchCommand(console, "/tellraw " + args[1] + "{\"text\":\"\\u0412\\u044b \\u043e\\u0442\\u043f\\u0443\\u0449\\u0435\\u043d\\u044b \\u0441 \\u043f\\u0440\\u043e\\u0432\\u0435\\u0440\\u043a\\u0438.\",\"bold\":true}");
+            }
+
             commandSender.sendMessage(prefix + " Неизвестная команда. Используйте /check help");
             return false;
         }
+
     }
 }
